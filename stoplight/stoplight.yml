@@ -1,298 +1,317 @@
-# This is the StopLight YML File
 openapi: 3.0.0
 info:
-  title: LOOP LOL Endpoints
+  title: Bswift Endpoints
   version: '1.0'
-  description: 'LOOP LOL Endpoints'
+  description: Bswift Endpoints
   contact:
-    name: LOOP Support
-    email: ali@ridewithloop.com
-    url: 'https://www.ridewithloop.com'
+    name: Bswift Support
+    email: nobody@bswift.com
+    url: 'https://www.bswfit.com'
 servers:
-  - url: 'https://dev.looplol.net'
+  - url: 'https://secure.bswiftqa.com/'
     description: Developer
-  # - description: Sandbox
-  #   url: 'https://todos-sandbox.stoplight.io'
 paths:
   /v1/get-driver-and-vehicle-info:
     post:
-      summary: 'Get Driver and Vehicle Info'
-      description: 'Endpoint to return Driver and Vechicle Info.'
-      operationId: 'get-driver-and-vehicle-info'
+      summary: Get Driver and Vehicle Info
+      description: Endpoint to return Driver and Vechicle Info.
+      operationId: get-driver-and-vehicle-info
       responses:
         '200':
           description: Returns Driver and Vehicle Info.
           content:
             application/json:
               schema:
-                $ref: './Models/getDriverAndVehicleInfoResponse.yml'
+                $ref: ./Models/getDriverAndVehicleInfoResponse.yml
         '400':
           description: Returns Driver and Vehicle Info.
           content:
             application/json:
               schema:
-                $ref: './Models/getDriverAndVehicleInfoResponse400Error.yml'
+                $ref: ./Models/getDriverAndVehicleInfoResponse400Error.yml
       requestBody:
         content:
           application/json:
             schema:
-              $ref: './Models/getDriverAndVehicleInfoRequest.yml'
+              $ref: ./Models/getDriverAndVehicleInfoRequest.yml
+        description: ''
   /get-products:
     post:
-      summary: 'Get Products'
-      description: 'Endpoint to Get Products.'
-      operationId: 'get-products'
+      summary: Get Products
+      description: Endpoint to Get Products.
+      operationId: get-products
       responses:
         '200':
           description: Returns product details.
           content:
             application/json:
               schema:
-                $ref: './Models/getProductsResponse.yml'
+                $ref: ./Models/getProductsResponse.yml
   /v1/get-quote:
     post:
-      summary: 'Get Quote'
-      description: 'Endpoint to return Get Quote.'
-      operationId: 'get-quote'
+      summary: Get Quote
+      description: Endpoint to return Get Quote.
+      operationId: get-quote
       responses:
         '200':
           description: Returns Get Quote.
           content:
             application/json:
               schema:
-                $ref: './Models/getQuoteResponse.yml'
+                $ref: ./Models/getQuoteResponse.yml
         '400':
           description: Returns Get Quote.
           content:
             application/json:
               schema:
-                $ref: './Models/getQuoteResponse400Error.yml'
+                $ref: ./Models/getQuoteResponse400Error.yml
         '500':
           description: Returns Get Quote.
           content:
             application/json:
               schema:
-                $ref: './Models/getQuoteResponse500Error.yml'
+                $ref: ./Models/getQuoteResponse500Error.yml
       requestBody:
         content:
           application/json:
             schema:
-              $ref: './Models/getQuoteRequest.yml'
+              $ref: ./Models/getQuoteRequest.yml
   /v1/bind-policy:
     post:
-      summary: 'Bind Policy'
-      description: 'Endpoint to Bind Policy.'
-      operationId: 'bind-policy'
+      summary: Bind Policy
+      description: Endpoint to Bind Policy.
+      operationId: bind-policy
       responses:
         '200':
-          description: 'Returns Bind Policy.'
+          description: Returns Bind Policy.
           content:
             application/json:
               schema:
-                $ref: './Models/bindPolicyResponse.yml'
+                $ref: ./Models/bindPolicyResponse.yml
         '400':
-          description: 'Returns Bind Policy.'
+          description: Returns Bind Policy.
           content:
             application/json:
               schema:
-                $ref: './Models/bindPolicyResponse400Error.yml'
+                $ref: ./Models/bindPolicyResponse400Error.yml
         '500':
-          description: 'Returns Bind Policy.'
+          description: Returns Bind Policy.
           content:
             application/json:
               schema:
-                $ref: './Models/bindPolicyResponse500Error.yml'
+                $ref: ./Models/bindPolicyResponse500Error.yml
       requestBody:
         content:
           application/json:
             schema:
-              $ref: './Models/bindPolicyRequest.yml'
+              $ref: ./Models/bindPolicyRequest.yml
   /v1/issue-policy:
     post:
-      summary: 'Issue Policy'
-      description: 'Endpoint to Issue Policy.'
-      operationId: 'issue-policy'
+      summary: Issue Policy
+      description: Endpoint to Issue Policy.
+      operationId: issue-policy
       responses:
         '200':
-          description: 'Returns Issue Policy.'
+          description: Returns Issue Policy.
           content:
             application/json:
               schema:
-                $ref: './Models/issuePolicyResponse.yml'
+                $ref: ./Models/issuePolicyResponse.yml
         '400':
-          description: 'Returns Issue Policy.'
+          description: Returns Issue Policy.
           content:
             application/json:
               schema:
-                $ref: './Models/issuePolicyResponse400Error.yml'
+                $ref: ./Models/issuePolicyResponse400Error.yml
         '500':
-          description: 'Returns Issue Policy.'
+          description: Returns Issue Policy.
           content:
             application/json:
               schema:
-                $ref: './Models/issuePolicyResponse500Error.yml'
+                $ref: ./Models/issuePolicyResponse500Error.yml
       requestBody:
         content:
           application/json:
             schema:
-              $ref: './Models/issuePolicyRequest.yml'
+              $ref: ./Models/issuePolicyRequest.yml
   /v1/pay-invoice:
     post:
-      summary: 'Pay Invoice'
-      description: 'Endpoint to Pay Invoice.'
-      operationId: 'pay-invoice'
+      summary: Pay Invoice
+      description: Endpoint to Pay Invoice.
+      operationId: pay-invoice
       responses:
         '200':
-          description: 'Returns Pay Invoice.'
+          description: Returns Pay Invoice.
           content:
             application/json:
               schema:
-                $ref: './Models/payInvoiceResponse.yml'
+                $ref: ./Models/payInvoiceResponse.yml
         '400':
-          description: 'Returns Pay Invoice.'
+          description: Returns Pay Invoice.
           content:
             application/json:
               schema:
-                $ref: './Models/payInvoiceResponse400Error.yml'
+                $ref: ./Models/payInvoiceResponse400Error.yml
         '500':
-          description: 'Returns Pay Invoice.'
+          description: Returns Pay Invoice.
           content:
             application/json:
               schema:
-                $ref: './Models/payInvoiceResponse500Error.yml'
+                $ref: ./Models/payInvoiceResponse500Error.yml
       requestBody:
         content:
           application/json:
             schema:
-              $ref: './Models/payInvoiceRequest.yml'
+              $ref: ./Models/payInvoiceRequest.yml
   /e-sign:
     post:
-      summary: 'E-Signature'
-      description: 'Endpoint to E-Sign.'
-      operationId: 'e-sign'
+      summary: E-Signature
+      description: Endpoint to E-Sign.
+      operationId: e-sign
       responses:
         '200':
           description: Success.
           content:
             application/json:
               schema:
-                $ref: './Models/eSignResponse.yml'
+                $ref: ./Models/eSignResponse.yml
   /associate-policy-to-existing-account:
     post:
-      summary: 'Associate Policy to Existing Account'
-      description: 'Ednpoint to Associate Policy to Existing Account.'
-      operationId: 'associate-policy-to-existing-account'
+      summary: Associate Policy to Existing Account
+      description: Ednpoint to Associate Policy to Existing Account.
+      operationId: associate-policy-to-existing-account
       responses:
         '200':
-          description: 'Success.'
+          description: Success.
           content:
             application/json:
               schema:
-                $ref: './Models/associatePolicyToExistingAccountResponse.yml'
+                $ref: ./Models/associatePolicyToExistingAccountResponse.yml
   /request-endorsement:
     post:
-      summary: 'Request Endorsement'
-      description: 'Endpoint to Request Endorsement.'
-      operationId: 'request-endorsement'
+      summary: Request Endorsement
+      description: Endpoint to Request Endorsement.
+      operationId: request-endorsement
       responses:
         '200':
           description: Returns endorsement request response.
           content:
             application/json:
               schema:
-                $ref: './Models/requestEndorsementResponse.yml'
+                $ref: ./Models/requestEndorsementResponse.yml
   /request-cancellation:
     post:
-      summary: 'Request Cancellation'
-      description: 'Endpoint to Request Cancellation.'
-      operationId: 'request-cancellation'
+      summary: Request Cancellation
+      description: Endpoint to Request Cancellation.
+      operationId: request-cancellation
       responses:
         '200':
           description: Returns cancellation request response.
           content:
             application/json:
               schema:
-                $ref: './Models/requestCancellationResponse.yml'
+                $ref: ./Models/requestCancellationResponse.yml
   /request-reinstatement:
     post:
-      summary: 'Request Reinstatement'
-      description: 'Endpoint to Request Reinstatement.'
-      operationId: 'request-reinstatement'
+      summary: Request Reinstatement
+      description: Endpoint to Request Reinstatement.
+      operationId: request-reinstatement
       responses:
         '200':
           description: Returns reinstatement request response.
           content:
             application/json:
               schema:
-                $ref: './Models/requestReinstatementResponse.yml'
-      #  todo
-      # requestBody:
-      #   content:
-      #     application/json:
-      #       schema:
-      #         $ref: './Models/RequestReinstatementRequest.yml'
+                $ref: ./Models/requestReinstatementResponse.yml
   /submit-claim:
     post:
-      summary: 'Submit Claim'
-      description: 'Endpoint Submit Claim.'
-      operationId: 'submit-claim'
+      summary: Submit Claim
+      description: Endpoint Submit Claim.
+      operationId: submit-claim
       responses:
         '200':
           description: Returns claim number generated from submission.
           content:
             application/json:
               schema:
-                $ref: './Models/submitClaimResponse.yml'
+                $ref: ./Models/submitClaimResponse.yml
   /process-payment:
     post:
-      summary: 'Process Payment'
-      description: 'Endpoint to Process Payment.'
-      operationId: 'process-payment'
+      summary: Process Payment
+      description: Endpoint to Process Payment.
+      operationId: process-payment
       responses:
         '200':
-          description: 'Returns payment information'
+          description: Returns payment information
           content:
             application/json:
               schema:
-                $ref: './Models/processPaymentResponse.yml'
+                $ref: ./Models/processPaymentResponse.yml
   /get-policy:
     post:
-      summary: 'Get Policy'
-      description: 'Endpoint to Get Policy.'
-      operationId: 'get-policy'
+      summary: Get Policy
+      description: Endpoint to Get Policy.
+      operationId: get-policy
       responses:
         '200':
           description: Returns policy details.
           content:
             application/json:
               schema:
-                $ref: './Models/getPolicyResponse.yml'
+                $ref: ./Models/getPolicyResponse.yml
         '400':
           description: Returns policy details.
           content:
             application/json:
               schema:
-                $ref: './Models/getPolicyResponse400Error.yml'
+                $ref: ./Models/getPolicyResponse400Error.yml
         '500':
           description: Returns policy details.
           content:
             application/json:
               schema:
-                $ref: './Models/getPolicyResponse500Error.yml'
+                $ref: ./Models/getPolicyResponse500Error.yml
       requestBody:
         content:
           application/json:
             schema:
-              $ref: './Models/getPolicyRequest.yml'
+              $ref: ./Models/getPolicyRequest.yml
   /get-documents:
     post:
-      summary: 'Get Documents'
-      description: 'Endpoint to Get Documents.'
-      operationId: 'get-documents'
+      summary: Get Documents
+      description: Endpoint to Get Documents.
+      operationId: get-documents
       responses:
         '200':
-          description: 'Returns document information'
+          description: Returns document information
           content:
             application/json:
               schema:
-                $ref: './Models/getDocumentsResponse.yml'
+                $ref: ./Models/getDocumentsResponse.yml
+components:
+  schemas:
+    getDriverResponse:
+      title: getDriverResponse
+      x-stoplight:
+        id: dnw45ek4ew89g
+type: object
+properties:
+  data:
+    type: object
+    required:
+      - policyholderID
+      - policyID
+      - quoteID
+    properties:
+      policyholderID:
+        type: string
+        description: The Policyholder ID.
+        example: 000597c1-e065-495e-bc10-c90eddf0e204
+      policyID:
+        type: string
+        description: The Policy ID.
+        example: "100154690"
+      quoteID:
+        type: string
+        description: The Quote ID.
+        example: "100154810"
