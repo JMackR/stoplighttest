@@ -1,0 +1,22 @@
+type: object
+properties:
+  statusCode:
+    type: integer
+    description: The status code of the response.
+    example: 200
+  title:
+    type: string
+    description: The title of the status code.
+    example: OK
+  details:
+    type: string
+    description: The details of the status code.
+    example: OK.
+  data:
+    type: object
+    description: Object of the response.
+    properties:
+      requestStatus:
+        type: string
+        description: The status of the request endorsement.
+        example: success

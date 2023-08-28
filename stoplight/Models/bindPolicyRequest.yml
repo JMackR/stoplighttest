@@ -1,0 +1,21 @@
+type: object
+properties:
+  data:
+    type: object
+    required:
+      - policyholderID
+      - policyID
+      - quoteID
+    properties:
+      policyholderID:
+        type: string
+        description: The Policyholder ID.
+        example: 000597c1-e065-495e-bc10-c90eddf0e204
+      policyID:
+        type: string
+        description: The Policy ID.
+        example: "100154690"
+      quoteID:
+        type: string
+        description: The Quote ID.
+        example: "100154810"

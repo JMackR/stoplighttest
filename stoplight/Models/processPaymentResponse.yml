@@ -1,0 +1,38 @@
+type: object
+properties:
+  statusCode:
+    type: integer
+    description: The status code of the response.
+    example: 200
+  title:
+    type: string
+    description: The title of the status code.
+    example: OK
+  details:
+    type: string
+    description: The details of the status code.
+    example: OK.
+  data:
+    type: object
+    description: Object of the payment.
+    properties:
+      paymentStatus:
+        type: string
+        description: The status of the payment.
+        example: success
+      paymentAmount:
+        type: integer
+        description: The amount the payment was made.
+        example: 300
+      paymentDate:
+        type: string
+        description: The date of the payment.
+        example: '2022-04-14T19:30:50.080Z'
+      paymentConfirmation:
+        type: integer
+        description: The confirmation number of the payment.
+        example: 123
+      paymentReceipt:
+        type: string
+        description: The receipt of the payment in a PDF.
+        example: 'https://drive.google.com/file/d/1yel1SfTenXtK6LgXgvE-AZ-j9HwM-stC/view?usp=sharing'

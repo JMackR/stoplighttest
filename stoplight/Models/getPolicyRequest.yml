@@ -1,0 +1,11 @@
+type: object
+properties:
+  data:
+    type: object
+    required:
+      - policyID
+    properties:
+      policyID:
+        type: string
+        description: The id of the policy.
+        example: '100006676'

@@ -1,0 +1,42 @@
+type: object
+properties:
+  statusCode:
+    type: integer
+    description: The status code of the response.
+    example: 200
+  title:
+    type: string
+    description: The title of the status code.
+    example: OK
+  details:
+    type: string
+    description: The details of the status code.
+    example: OK.
+  data:
+    type: object
+    description: Object of the document.
+    properties:
+      document1:
+        type: object
+        description: Object for document response.
+        properties:
+          url:
+            type: string
+            description: Url for document.
+            example: https://drive.google.com/file/d/1hAVIXkMhEV8iSKtE1KT-15xW7uxmq5_t/view?usp=sharing
+          docType:
+            type: string
+            description: Document Type.
+            example: id card
+      document2:
+        type: object
+        description: Object for document response.
+        properties:
+          url:
+            type: string
+            description: Url for document.
+            example: https://drive.google.com/file/d/1bxrkjjTTxUUQFPBUUjl6M3xozbb-fjtk/view?usp=sharing
+          docType:
+            type: string
+            description: Document Type.
+            example: policy

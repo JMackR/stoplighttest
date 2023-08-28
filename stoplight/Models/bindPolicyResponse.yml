@@ -1,0 +1,83 @@
+type: object
+properties:
+  statusCode:
+    type: integer
+    description: The status code of the response.
+    example: 200
+  title:
+    type: string
+    description: The title of the status code.
+    example: OK
+  details:
+    type: string
+    description: The details of the status code.
+    example: OK.
+  data:
+    type: object
+    properties:
+      policyholder:
+        type: object
+        description: The policyholder object.
+        properties:
+          id:
+            type: string
+            description: The id of the policyholder.
+            example: 'e624b54a-8bb7-46db-b739-2ba5031d4382'
+          policy:
+            type: object
+            description: The policy.
+            properties:
+              id:
+                type: string
+                description: The ID of the policy.
+                example: '100002400'
+              number:
+                type: string
+                description: The policy number.
+                example: 'LOO-TX-0000105334-00'
+              quote:
+                type: object
+                description: The accepted / bound quote.
+                properties:
+                  id:
+                    type: string
+                    description: The ID of the quote.
+                    example: "100002416"
+                  initialPayment:
+                    type: object
+                    description: The first payment (initial payment) amount that has to be paid to issue the policy.
+                    properties:
+                      date:
+                        type: string
+                        description: "The date of the first payment (today). Format: YYYY-MM-DD"
+                        example: '2022-11-03'
+                      amount:
+                        type: number
+                        description: The amount of the payment due today.
+                        example: 490.86
+                  documents:
+                    type: array
+                    description: Array of documents after acceptance / bound.
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                          description: The ID of the document.
+                          example: "99973539-b630-4bac-bd8a-31f4966a6dd1"
+                        name:
+                          type: string
+                          description: The name of the document.
+                          example: Texas Automobile Application
+                        url:
+                          type: string
+                          description: The tokenized URL of the document.
+                          example: "https://storage.googleapis.com/non-prod-dev-pas-assets/test_doc.pdf"
+                        urlExpirationTimestamp:
+                          type: string
+                          description: The URL expiration timestamp of the document since it's tokenized.
+                          example: "1667394543983"
+                        type:
+                          type: string
+                          description: The type of the document.
+                          example: pdf

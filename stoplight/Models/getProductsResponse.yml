@@ -1,0 +1,80 @@
+type: object
+properties:
+  statusCode:
+    type: integer
+    description: The status code of the response
+    example: 200
+  title:
+    type: string
+    description: The title of the status code
+    example: OK
+  details:
+    type: string
+    description: The details of the status code
+    example: OK.
+  data:
+    type: object
+    description: Get Products Response
+    properties:
+      productName:
+        type: string
+        description: The product name
+        example: TX Auto
+      listOfPolicyWideCoverages:
+        type: array
+        description: Array of policy wide coverages
+        items:
+          type: object
+          properties:
+            id:
+              type: string
+              description: Internal coverage id
+              example: coverage1
+            coverageName:
+              type: string
+              description: Coverage name
+              example: Bodily Injury
+            required:
+              type: string
+              description: Required?
+              example: 'Yes'
+            defaulted:
+              type: string
+              description: Defaulted?
+              example: 'No'
+            listOfPossibleLimits:
+              type: array
+              description: List of possible limits.
+              items:
+                type: integer
+                description: Limit
+              example: [50000, 100000]
+      listOfVehicleLevelCoverages:
+        type: array
+        description: Array of vehicle coverages.
+        items:
+          type: object
+          properties:
+            id:
+              type: string
+              description: Internal coverage id
+              example: coverage1
+            coverageName:
+              type: string
+              description: Coverage name.
+              example: Comprehensive Coverage
+            required:
+              type: string
+              description: Required?
+              example: 'No'
+            defaulted:
+              type: string
+              description: Defaulted?
+              example: 'Yes'
+            listOfPossibleDeductibles:
+              type: array
+              description: List of possible deductibles
+              items:
+                type: integer
+                description: Limit
+              example: [100, 500, 1000]

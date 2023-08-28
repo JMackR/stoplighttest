@@ -1,0 +1,417 @@
+type: object
+properties:
+  statusCode:
+    type: integer
+    description: The status code of the response.
+    example: 200
+  title:
+    type: string
+    description: The title of the status code.
+    example: OK
+  details:
+    type: string
+    description: The details of the status code.
+    example: OK.
+  data:
+    type: object
+    properties:
+      policyholder:
+        type: object
+        description: The policyholder object.
+        properties:
+          id:
+            type: string
+            description: The id of the policyholder.
+            example: 'e624b54a-8bb7-46db-b739-2ba5031d4382'
+          firstName:
+            type: string
+            description: The first name of the policyholder.
+            example: Debra
+          lastName:
+            type: string
+            description: The last name of the policyholder.
+            example: Taylor
+          suffix:
+            type: string
+            description: The suffix of the driver name. Possible values 'Jr.', 'Sr.', 'II', 'III', 'IV', 'V'
+            example: 'Jr.'
+          policy:
+            type: object
+            description: The policy.
+            properties:
+              id:
+                type: string
+                description: The ID of the policy.
+                example: '100002400'
+              lineOfBusiness:
+                type: string
+                description: The line of business of the policy.
+                example: Personal Auto
+              lengthInMonths:
+                type: number
+                description: The length of the policy in months.
+                example: 6
+              effectiveDate:
+                type: string
+                description: The effective date of the policy (ISO 8601).
+                example: '2022-09-01T20:30:09.186Z'
+              eDelivery:
+                type: string
+                description: The eDelivery of the policy. Possible values 'Y', 'N', 'No Use'
+                example: 'Y'
+              expirationDate:
+                type: string
+                description: The expiration date of the policy (ISO 8601).
+                example: '2023-03-01T00:01:00.186Z'
+              coverages:
+                type: array
+                description: List of policy-wide coverages.
+                items:
+                  type: object
+                  properties:
+                    shortName:
+                      type: string
+                      description: The truncated name of the coverage.
+                      example: bi
+                    longName:
+                      type: string
+                      description: The name of the coverage.
+                      example: 'Bodily Injury'
+                    isSelected:
+                      type: boolean
+                      description: Whether the coverage is selected or not.
+                      example: true
+                    limit:
+                      type: string
+                      description: The coverage limit.
+                      example: '30/60'
+              drivers:
+                type: array
+                description: List of drivers on the policy.
+                items:
+                  type: object
+                  properties:
+                    driverAndVehicleDocID:
+                      type: string
+                      description: The driver and vehicle doc id.
+                      example: 'edoUGM0NYBbZaquW5ooN'
+                    firstName:
+                      type: string
+                      description: The first name of the driver.
+                      example: Debra
+                    lastName:
+                      type: string
+                      description: The last name of the driver.
+                      example: Taylor
+                    suffix:
+                      type: string
+                      description: The suffix of the driver name. Possible values 'Jr.', 'Sr.', 'II', 'III', 'IV', 'V'
+                      example: 'Jr.'
+                    relation:
+                      type: string
+                      description: The relation of the driver. Possible values 'Insured', 'Spouse', 'Parent', 'Child', 'Employee', 'Brother/Sister', 'Other Relative', 'Other'
+                      example: 'Insured'
+                    isPrimary:
+                      type: boolean
+                      description: If this is the primary driver or not. Only 1 can be the primary driver.
+                      example: true
+                    isExcluded:
+                      type: boolean
+                      description: If this driver is excluded from being insured or not.
+                      example: false
+                    dateOfBirth:
+                      type: string
+                      description: The date of birth of the driver. Must follow the date format in the example.
+                      example: '1990-07-21'
+                    maritalStatus:
+                      type: string
+                      nullable: true
+                      description: The marital status of the driver. Can be null for excluded drivers.
+                      example: S
+                    email:
+                      type: string
+                      nullable: true
+                      description: The email address of the driver. Can be null for non-primary or excluded drivers.
+                      example: 'debra@email.com'
+                    cell:
+                      type: string
+                      nullable: true
+                      description: The cell phone number of the driver. Can be null for non-primary or excluded drivers.
+                      example: '201-345-6765'
+                    homeAddress:
+                      type: object
+                      nullable: true
+                      description: The mailing address of the driver. Can be null for excluded driver.
+                      required:
+                        - street1
+                        - city
+                        - state
+                        - zipCode
+                      properties:
+                        street1:
+                          type: string
+                          description: The street1 of the driver.
+                          example: '9517 Everglade Dr'
+                        street2:
+                          type: string
+                          nullable: true
+                          description: The street2 of the driver.
+                          example: 'Apartment 3B'
+                        city:
+                          type: string
+                          description: The city of the driver.
+                          example: Austin
+                        state:
+                          type: string
+                          description: The state of the driver.
+                          example: TX
+                        zipCode:
+                          type: string
+                          description: The zip code of the driver.
+                          example: '73301'
+                    mailingAddress:
+                      type: object
+                      nullable: true
+                      description: The mailing address of the driver. Can be null for excluded driver.
+                      required:
+                        - street1
+                        - city
+                        - state
+                        - zipCode
+                      properties:
+                        street1:
+                          type: string
+                          description: The street1 of the driver.
+                          example: '9517 Everglade Dr'
+                        street2:
+                          type: string
+                          nullable: true
+                          description: The street2 of the driver.
+                          example: 'Apartment 3B'
+                        city:
+                          type: string
+                          description: The city of the driver.
+                          example: Austin
+                        state:
+                          type: string
+                          description: The state of the driver.
+                          example: TX
+                        zipCode:
+                          type: string
+                          description: The zip code of the driver.
+                          example: '73301'
+                    licenseState:
+                      type: string
+                      nullable: true
+                      description: The driver license state (for the driver). Can be null for excluded drivers.
+                      example: TX
+                    licenseNumber:
+                      type: string
+                      nullable: true
+                      description: The driver license number (for the driver). Can be null for excluded drivers.
+                      example: '123456789'
+                    encryptedLicenseNumber:
+                      type: string
+                      nullable: true
+                      description: The encrypted driver license number (for the driver). Can be null for excluded drivers.
+                      example: 'uFijBnwWsRzNHhOqm6v077GB2ce3'
+              vehicles:
+                type: array
+                description: List of vehicles on this policy.
+                items:
+                  type: object
+                  properties:
+                    driverAndVehicleDocID:
+                      type: string
+                      description: The driver and vehicle doc id.
+                      example: 'edoUGM0NYBbZaquW5ooN'
+                    vehicleDocID:
+                      type: string
+                      nullable: true
+                      description: The vehicle doc id.
+                      example: 'edoUGM0NYBbZaquW5ooN'
+                    vehicleInternalID:
+                      type: string
+                      description: The internal ID of the vehicle. This will help map the premiumByCoverage.
+                      example: "80612c49-a06d-4e47-97d1-48b0493a505c"
+                    vin:
+                      type: string
+                      description: The vehicle VIN number, should be masked and only show the last 4 digits.
+                      example: '#############3058'
+                    encryptedVIN:
+                      type: string
+                      description: The encrypted vehicle VIN number.
+                      example: 'uFijBnwWsRzNHhOqm6v077GB2ce3'
+                    year:
+                      type: string
+                      description: The vehicle year.
+                      example: '2001'
+                    make:
+                      type: string
+                      description: The vehicle make.
+                      example: Lincoln
+                    model:
+                      type: string
+                      description: The vehicle model.
+                      example: LS
+                    garagingStreetAddress:
+                      type: object
+                      properties:
+                        street1:
+                          type: string
+                          description: The street1 of where the vehicle is stored.
+                          example: '9517 Everglade Dr'
+                        street2:
+                          type: string
+                          nullable: true
+                          description: The street2 of where the vehicle is stored.
+                          example: 'Apartment 3B'
+                        city:
+                          type: string
+                          description: The city of where the vehicle is stored.
+                          example: Austin
+                        state:
+                          type: string
+                          description: The state of where the vehicle is stored.
+                          example: TX
+                        zipCode:
+                          type: string
+                          description: The zip code of where the vehicle is stored.
+                          example: '73301'
+                    licensePlate:
+                      type: string
+                      description: The license plate.
+                      nullable: true
+                      example: 'XYZ1234'
+                    licensePlateState:
+                      type: string
+                      description: The license plate state.
+                      nullable: true
+                      example: TX
+                    ownership:
+                      type: string
+                      description: The type of ownership. Possible values 'Financing', 'Lease', 'Own'
+                      example: Financing
+                    use:
+                      type: string
+                      description: The use purpose of the vehicle. Possible values 'Pleasure', 'Remote 1', 'Remote 2', 'Commuting', 'Non-Owners', 'TNC/Business', 'Farm'
+                      example: Commuting
+                    weeklyNumberTimesToDrive:
+                      type: string
+                      description: The amount of times the vehicle is driven weekly. Possible values 'None', '1', '2', '3 or more'
+                      example: '3 or more'
+                    yearlyMiles:
+                      type: string
+                      description: The amount of miles accumulated on the vehicle within a year. Possible values '1 - 5,000', '5,001 - 7,500', '7,501 - 10,000', '10,001 or more'
+                      example: '10,001 or more'
+                    usedForBusiness:
+                      type: string
+                      description: 'Indicates if the vehicle is used for business. Possible values ''Y'', ''N''.'
+                      example: 'Y'
+                    usedForTNC:
+                      type: string
+                      description: 'Indicates if the vehicle is used for TNC / rideshare. Possible values ''Y'', ''N''.'
+                      example: 'Y'
+                    usedForCommuting:
+                      type: string
+                      nullable: true
+                      description: 'Indicates if the vehicle is used for commuting. If yearlyMiles is less than or equal to 7500, the possible values are ''Y'', ''N''.'
+                      example: 'Y'
+                    value:
+                      type: number
+                      description: The value of the vehicle.
+                      example: 30000
+                    coverages:
+                      type: array
+                      description: List of vehicle-level coverages.
+                      items:
+                        type: object
+                        properties:
+                          shortName:
+                            type: string
+                            description: The truncated name of the coverage.
+                            example: comp
+                          longName:
+                            type: string
+                            description: The name of the coverage.
+                            example: 'Comprehensive'
+                          isSelected:
+                            type: boolean
+                            description: Whether the coverage is selected or not.
+                            example: true
+                          deductible:
+                            type: string
+                            description: The coverage deductible.
+                            example: '500'
+              quotes:
+                type: array
+                description: Array of quotes with payment plan information.
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: string
+                      description: The quote ID.
+                      example: "100002416"
+                    totalQuotePremium:
+                      type: number
+                      description: The total quote premium.
+                      example: 2946
+                    paymentPlan:
+                      type: object
+                      properties:
+                        name:
+                          type: string
+                          description: The name of the payment plan.
+                          example: "payInFull"
+                        discountsApplied:
+                          type: array
+                          description: The discounts applied to this quote.
+                          items:
+                            type: object
+                            properties:
+                              name:
+                                type: string
+                                description: The name of the discount.
+                                example: "discount1"
+                              discount:
+                                type: string
+                                description: The description of the discount.
+                                example: Safe Driving Discount
+                              discountAmount:
+                                type: number
+                                description: The discount amount in dollars.
+                                example: 25
+                        paymentSchedule:
+                          type: array
+                          description: The payment schedule for this quote.
+                          items:
+                            type: object
+                            properties:
+                              date:
+                                type: string
+                                description: The schedule payment date in the format shown in the example.
+                                example: "2022-10-15"
+                              amount:
+                                type: number
+                                description: The amount of the payment.
+                                example: 2504.1
+                        premiumByCoverage:
+                          type: array
+                          description: The premium amount by coverage.
+                          items:
+                            type: object
+                            properties:
+                              vehicleInternalID:
+                                type: string
+                                nullable: true
+                                description: If null, coverage is policy-wide. If not null, the coverage maps to a vehicleInternalID.
+                                example: "80612c49-a06d-4e47-97d1-48b0493a505c"
+                              shortName:
+                                type: string
+                                description: The truncated name of the coverage.
+                                example: bi
+                              premium:
+                                type: number
+                                description: The coverage specific premium.
+                                example: 204.9

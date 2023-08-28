@@ -1,0 +1,123 @@
+type: object
+properties:
+  statusCode:
+    type: integer
+    description: The status code of the response.
+    example: 200
+  title:
+    type: string
+    description: The title of the status code.
+    example: OK
+  details:
+    type: string
+    description: The details of the status code.
+    example: OK.
+  data:
+    type: object
+    properties:
+      firstName:
+        type: string
+        description: The first name of the driver.
+        example: JOHN
+      lastName:
+        type: string
+        description: The last name of the driver.
+        example: SMITH
+      driverLicenseState:
+        type: string
+        description: The license state of the driver.
+        example: TX
+      driverLicenseNumber:
+        type: string
+        description: The license number of the driver, should be masked and masked only show the last 2 digits.
+        example: '#######89'
+      encryptedLicenseNumber:
+        type: string
+        description: The encrypted license number of the driver.
+        example: 'bypCaqOloMGk1wAyNthI3QcyMEif'
+      phoneNumber:
+        type: string
+        description: The phone number of the driver.
+        example: '201-345-6765'
+      drivers:
+        type: array
+        description: Array of driver objects.
+        items:
+          type: object
+          properties:
+            driverAndVehicleDocID:
+              type: string
+              nullable: true
+              description: The document id associated with the driver.
+              example: 'JBgIRXNs7FexnY44176J'
+            isPrimary:
+              type: boolean
+              description: True if this driver is the primary driver on record.
+              example: true
+            firstName:
+              type: string
+              description: The first name of the driver.
+              example: JOHN
+            lastName:
+              type: string
+              description: The last name of the driver.
+              example: SMITH
+            dateOfBirth:
+              type: string
+              description: The date of birth of the driver.
+              example: '1984-08-01'
+            driverLicenseState:
+              type: string
+              nullable: true
+              description: The license state of the driver.
+              example: TX
+            driverLicenseNumber:
+              type: string
+              nullable: true
+              description: The license number of the driver, should be masked and masked and only show the last 2 digits.
+              example: '#######89'
+            encryptedLicenseNumber:
+              type: string
+              nullable: true
+              description: The encrypted license number of the driver.
+              example: 'bypCaqOloMGk1wAyNthI3QcyMEif'
+            mvrIndicator:
+              type: string
+              nullable: true
+              description: The motor vehicle records indicator.
+              example: V
+      vehicles:
+        type: array
+        description: Array of vehicle objects.
+        items:
+          type: object
+          properties:
+            vehicleDocID:
+              type: string
+              nullable: true
+              description: The document id associated with the vehicle.
+              example: 'jslNZcLgUYtJCLfRf5QF'
+            driverAndVehicleDocID:
+              type: string
+              description: The document id associated with the driver.
+              example: 'JBgIRXNs7FexnY44176J'
+            vin:
+              type: string
+              description: The vehicle VIN number, should be masked and only show the last 4 digits.
+              example: '#############3058'
+            encryptedVIN:
+              type: string
+              description: The encrypted vehicle VIN number.
+              example: 'uFijBnwWsRzNHhOqm6v077GB2ce3'
+            year:
+              type: string
+              description: The vehicle year.
+              example: '2001'
+            make:
+              type: string
+              description: The vehicle make.
+              example: LINCOLN
+            model:
+              type: string
+              description: The vehicle model.
+              example: LS

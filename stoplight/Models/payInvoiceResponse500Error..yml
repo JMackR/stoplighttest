@@ -1,0 +1,22 @@
+type: object
+properties:
+  statusCode:
+    type: integer
+    description: The status code of the response.
+    example: 500
+  title:
+    type: string
+    description: The title of the status code.
+    example: Internal Server Error
+  details:
+    type: string
+    description: The details of the status code.
+    example: Internal Server Error
+  errors:
+    type: object
+    description: The errors object.
+    properties:
+      errorMessage:
+        type: string
+        description: The error message.
+        example: Internal Server Error

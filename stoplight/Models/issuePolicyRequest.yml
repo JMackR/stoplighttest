@@ -1,0 +1,89 @@
+type: object
+properties:
+  data:
+    type: object
+    required:
+      - policyholderID
+      - policyID
+      - quoteID
+      - documents
+      - paymentInformation
+    properties:
+      policyholderID:
+        type: string
+        description: The Policyholder ID.
+        example: 000597c1-e065-495e-bc10-c90eddf0e204
+      policyID:
+        type: string
+        description: The Policy ID.
+        example: "100154690"
+      quoteID:
+        type: string
+        description: The Quote ID.
+        example: "100154810"
+      documents:
+        type: array
+        description: Array of signed documents.
+        items:
+          type: object
+          required:
+            - id
+            - name
+            - base64Data
+            - type
+          properties:
+            id:
+              type: string
+              description: The ID of the document.
+              example: "99973539-b630-4bac-bd8a-31f4966a6dd1"
+            name:
+              type: string
+              description: The name of the document.
+              example: Texas Automobile Application
+            base64Data:
+              type: string
+              description: The PDF represented as a Base64 String.
+              example: data:application/pdf;base64, JVBERi0xLjUKJeLjz9MKNCAwIG9iagoKPDwKL0ZpbHRlciAvRmxhdGVEZWNvZGUKL0xlbmd0aCAxMAo... (Too long to paste here)
+            type:
+              type: string
+              description: The type of the document. Has to be 'application/pdf;base64', which comes from HelloSign
+              example: application/pdf;base64
+      paymentInformation:
+        type: object
+        required:
+          - source
+          - timestamp
+          - amount
+          - paymentIntentID
+          - paymentMethodBrand
+          - paymentMethodLastFourDigits
+          - customerID
+        properties:
+          source:
+            type: string
+            description: The source of the processed payment.
+            example: "stripe"
+          timestamp:
+            type: string
+            description: The timestamp of the processed payment.
+            example: "1667394543983"
+          amount:
+            type: number
+            description: The amount of the processed payment.
+            example: 490.86
+          paymentIntentID:
+            type: string
+            description: The confirmation number (Payment Intent ID) of the processed payment.
+            example: "pi_1Dsf7u2eZvKYlo2Cmq1Y969w"
+          paymentMethodBrand:
+            type: string
+            description: The payment method (Payment Method Brand) of the processed payment.
+            example: "Visa"
+          paymentMethodLastFourDigits:
+            type: string
+            description: The last four digits of the payment method.
+            example: "4852"
+          customerID:
+            type: string
+            description: The Customer ID that the processed payment belongs to.
+            example: "cus_9BoKyB2Km2T7TE"

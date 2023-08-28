@@ -1,0 +1,33 @@
+type: object
+properties:
+  statusCode:
+    type: integer
+    description: The status code of the response.
+    example: 200
+  title:
+    type: string
+    description: The title of the status code.
+    example: OK
+  details:
+    type: string
+    description: The details of the status code.
+    example: OK.
+  data:
+    type: object
+    properties:
+      policyholderID:
+        type: string
+        description: The id of the policyholder.
+        example: 'e624b54a-8bb7-46db-b739-2ba5031d4382'
+      policyID:
+        type: string
+        description: The id of the policy.
+        example: '100154690'
+      policyNumber:
+        type: string
+        description: The number of the policy.
+        example: 'LOO-TX-0000105334-00'
+      quoteID:
+        type: string
+        description: The id of the quote.
+        example: '100154810'

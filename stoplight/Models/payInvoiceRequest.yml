@@ -1,0 +1,51 @@
+type: object
+properties:
+  data:
+    type: object
+    required:
+      - invoiceID
+      - paymentInformation
+    properties:
+      invoiceID:
+        type: string
+        description: The Invoice Locator ID.
+        example: "0150f065-92a0-4b90-8ac1-8679c8873ff5"
+      paymentInformation:
+        type: object
+        required:
+          - source
+          - timestamp
+          - amount
+          - paymentIntentID
+          - paymentMethodBrand
+          - paymentMethodLastFourDigits
+          - customerID
+        properties:
+          source:
+            type: string
+            description: The source of the processed payment.
+            example: "stripe"
+          timestamp:
+            type: string
+            description: The timestamp of the processed payment.
+            example: "1667394543983"
+          amount:
+            type: number
+            description: The amount of the processed payment.
+            example: 490.86
+          paymentIntentID:
+            type: string
+            description: The confirmation number (Payment Intent ID) of the processed payment.
+            example: "pi_1Dsf7u2eZvKYlo2Cmq1Y969w"
+          paymentMethodBrand:
+            type: string
+            description: The payment method (Payment Method Brand) of the processed payment.
+            example: "Visa"
+          paymentMethodLastFourDigits:
+            type: string
+            description: The last four digits of the payment method.
+            example: "4852"
+          customerID:
+            type: string
+            description: The Customer ID that the processed payment belongs to.
+            example: "cus_9BoKyB2Km2T7TE"

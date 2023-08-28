@@ -1,0 +1,388 @@
+type: object
+properties:
+  data:
+    type: object
+    required:
+      - clientTimeZone
+      - policyholder
+    properties:
+      clientTimeZone:
+        type: string
+        description: The client timezone.
+        example: America/Chicago
+      policyholder:
+        type: object
+        description: 'Data related to the policyholder. It includes policy, quote, drivers, and vehicles information inside.'
+        required:
+          - id
+          - firstName
+          - lastName
+          - suffix
+          - policyID
+          - quote
+        properties:
+          id:
+            type: string
+            nullable: true
+            description: 'The id of the policyholder. If null, the endpoint will create a Policyholder.'
+            example: e624b54a-8bb7-46db-b739-2ba5031d4382
+          firstName:
+            type: string
+            description: The first name of the policyholder.
+            example: Debra
+          lastName:
+            type: string
+            description: The last name of the policyholder.
+            example: Taylor
+          suffix:
+            type: string
+            nullable: true
+            description: The suffix of policyholder's name. Possible values 'Jr.' 'Sr.' 'II' 'III' 'IV' 'V'
+            example: 'Jr.'
+          policyID:
+            type: string
+            nullable: true
+            description: The id of the policy. If null a new one will be created.
+            example: '100006676'
+          quote:
+            type: object
+            description: 'Data related to the policy. It includes information about policy-wide coverages, drivers, and vehicles.'
+            required:
+              - lineOfBusiness
+              - lengthInMonths
+              - effectiveDate
+              - eDelivery
+              - coverages
+              - drivers
+              - vehicles
+            properties:
+              lineOfBusiness:
+                type: string
+                description: The line of business. Possible values 'Personal Auto'
+                example: Personal Auto
+              lengthInMonths:
+                type: number
+                description: The length of the policy in months.
+                example: 6
+              effectiveDate:
+                type: string
+                description: The date the policy begins (ISO 8601).
+                example: '2022-09-01T20:30:09.186Z'
+              eDelivery:
+                type: string
+                description: The eDelivery of the policy. Possible values 'Y', 'N', 'No Use'
+                example: 'Y'
+              coverages:
+                type: array
+                description: List of policy-wide coverages. Possible values 'bi' 'pd' 'pip' 'umUimbi' 'umUimpd' 'medpay'. Needs at least 1 coverage.
+                items:
+                  type: object
+                  required:
+                    - name
+                    - isSelected
+                    - limit
+                  properties:
+                    name:
+                      type: string
+                      description: The name of the coverage.
+                      example: bi
+                    isSelected:
+                      type: boolean
+                      description: 'If the coverage is selected or not. If isSelected is true, limit cannot be null'
+                      example: true
+                    limit:
+                      type: string
+                      nullable: true
+                      description: The limit of the policy-wide coverage.
+                      example: 30/60
+              drivers:
+                type: array
+                description: List of drivers on this policy.
+                items:
+                  type: object
+                  required:
+                    - driverAndVehicleDocID
+                    - isPrimary
+                    - isExcluded
+                    - firstName
+                    - lastName
+                    - suffix
+                    - relation
+                    - dateOfBirth
+                    - maritalStatus
+                    - email
+                    - cell
+                    - homeAddress
+                    - mailingAddress
+                    - licenseState
+                    - licenseNumber
+                  properties:
+                    driverAndVehicleDocID:
+                      type: string
+                      nullable: true
+                      description: The driver and vehicle doc id. If "isPrimary" is true, this field cannot be null. If "isPrimary" is false, this field can be null.
+                      example: edoUGM0NYBbZaquW5ooN
+                    isPrimary:
+                      type: boolean
+                      description: 'If this is the primary driver or not. If "isPrimary" is true, then "isExcluded" CANNOT be true.'
+                      example: true
+                    isExcluded:
+                      type: boolean
+                      description: 'If this driver is excluded or not. If "isPrimary" is true, then "isExcluded" CANNOT be true.'
+                      example: false
+                    firstName:
+                      type: string
+                      description: The first name of the driver.
+                      example: Debra
+                    lastName:
+                      type: string
+                      description: The last name of the driver.
+                      example: Taylor
+                    suffix:
+                      type: string
+                      nullable: true
+                      description: The suffix of policyholder's name. Possible values 'Jr.' 'Sr.' 'II' 'III' 'IV' 'V'
+                      example: 'Jr.'
+                    relation:
+                      type: string
+                      nullable: true
+                      description: The relation of the driver. If "isExcluded" is false, relation cannot be null. Possible values 'Insured', 'Spouse', 'Parent', 'Child', 'Employee', 'Brother/Sister', 'Other Relative', 'Other'
+                      example: 'Insured'
+                    dateOfBirth:
+                      type: string
+                      description: The date of birth of the driver. Must follow the date format in the example.
+                      example: '1990-07-21'
+                    maritalStatus:
+                      type: string
+                      nullable: true
+                      description: 'The marital status of the driver. If "isExcluded" is false, maritalStatus cannot be null. Valid values are ''S'',''M'',''W''.'
+                      example: S
+                    email:
+                      type: string
+                      nullable: true
+                      description: The email address of the driver. If "isPrimary" is true, email cannot be null. 
+                      example: debra@email.com
+                    cell:
+                      type: string
+                      nullable: true
+                      description: The cell phone number of the driver. Must follow the format in the example. If "isPrimary" is true, cell cannot be null. 
+                      example: 201-345-6765
+                    homeAddress:
+                      type: object
+                      nullable: true
+                      description: If "isExcluded" is false, homeAddress cannot be null.
+                      required:
+                        - street1
+                        - street2
+                        - city
+                        - state
+                        - zipCode
+                      properties:
+                        street1:
+                          type: string
+                          description: The street1 of the driver.
+                          example: 9517 Everglade Dr
+                        street2:
+                          type: string
+                          nullable: true
+                          description: The street2 of the driver.
+                          example: Apartment 3B
+                        city:
+                          type: string
+                          description: The city of the driver.
+                          example: Austin
+                        state:
+                          type: string
+                          description: The state of the driver.
+                          example: TX
+                        zipCode:
+                          type: string
+                          description: The zip code of the driver. Acceptable formats are "12345" and "12345-6789".
+                          example: '73301'
+                    mailingAddress:
+                      type: object
+                      nullable: true
+                      description: If "isExcluded" is false, mailingAddress cannot be null.
+                      required:
+                        - street1
+                        - street2
+                        - city
+                        - state
+                        - zipCode
+                      properties:
+                        street1:
+                          type: string
+                          description: The Mailing Address street1 of the driver.
+                          example: 9517 Everglade Dr
+                        street2:
+                          type: string
+                          nullable: true
+                          description: The Mailing Address street2 of the driver.
+                          example: Apartment 3B
+                        city:
+                          type: string
+                          description: The Mailing Address city of the driver.
+                          example: Austin
+                        state:
+                          type: string
+                          description: The Mailing Address state of the driver.
+                          example: TX
+                        zipCode:
+                          type: string
+                          description: The Mailing Address zip code of the driver. Acceptable formats are "12345" and "12345-6789".
+                          example: '73301'
+                    licenseState:
+                      type: string
+                      nullable: true
+                      description: The driver license state (for the driver). If "isExcluded" is false, licenseState cannot be null.
+                      example: TX
+                    licenseNumber:
+                      type: string
+                      nullable: true
+                      description: The driver license number (for the driver). If "isExcluded" is false, licenseNumber cannot be null. This value must be encrypted.
+                      example: 'uFijBnwWsRzNHhOqm6v077GB2ce3'
+              vehicles:
+                type: array
+                description: List of vehicles on this policy.
+                items:
+                  required:
+                    - driverAndVehicleDocID
+                    - vehicleDocID
+                    - vin
+                    - garagingStreetAddress
+                    - licensePlate
+                    - licensePlateState
+                    - coverages
+                    - ratingData
+                  properties:
+                    driverAndVehicleDocID:
+                      type: string
+                      nullable: true
+                      description: The driver and vehicle doc Id. Could be null for manually entered vehicles.
+                      example: edoUGM0NYBbZaquW5ooN
+                    vehicleDocID:
+                      type: string
+                      nullable: true
+                      description: The vehicle doc Id. Could be null for manually entered vehicles.
+                      example: edoUGM0NYBbZaquW5ooN
+                    vin:
+                      type: string
+                      description: The vin of the vehicle. This value must be encrypted.
+                      example: uFijBnwWsRzNHhOqm6v077GB2ce3
+                    year:
+                      type: string
+                      description: The vehicle year.
+                      example: '2001'
+                    make:
+                      type: string
+                      description: The vehicle make.
+                      example: Lincoln
+                    model:
+                      type: string
+                      description: The vehicle model.
+                      example: LS
+                    garagingStreetAddress:
+                      type: object
+                      required:
+                        - street1
+                        - street2
+                        - city
+                        - state
+                        - zipCode
+                        - latitude
+                        - longitude
+                      properties:
+                        street1:
+                          type: string
+                          description: The street1 of the vehicle
+                          example: 9517 Everglade Dr
+                        street2:
+                          type: string
+                          nullable: true
+                          description: The street2 of the vehicle.
+                          example: Apartment 3B
+                        city:
+                          type: string
+                          description: The city of the vehicle.
+                          example: Austin
+                        state:
+                          type: string
+                          description: The state of the vehicle.
+                          example: TX
+                        zipCode:
+                          type: string
+                          description: The zip code of the vehicle. Acceptable formats are "12345" and "12345-6789".
+                          example: '73301'
+                        latitude:
+                          type: number
+                          description: The latitude for the vehicle garaging address. Data type = float. Must be a real number between -90 and 90.
+                          example: 30.26139
+                        longitude:
+                          type: number
+                          description: The longitude for the vehicle garaging address. Data type = float. Must be a real number between -180 and 180.
+                          example: -97.71845
+                    licensePlate:
+                      type: string
+                      description: The license plate.
+                      nullable: true
+                      example: XYZ1234
+                    licensePlateState:
+                      type: string
+                      description: The license plate state.
+                      nullable: true
+                      example: TX
+                    coverages:
+                      type: array
+                      description: List of vehicle-level coverages. Possible values 'coll' 'comp'. If no coverages, send an empty array.
+                      example: []
+                      items:
+                        type: object
+                        required:
+                          - name
+                          - isSelected
+                          - deductible
+                        properties:
+                          name:
+                            type: string
+                            description: The name of the policy.
+                            example: comp
+                          isSelected:
+                            type: boolean
+                            description: 'If the coverage is selected or not for this vehicle. If isSelected is true, deductible cannot be null'
+                            example: true
+                          deductible:
+                            type: string
+                            nullable: true
+                            description: The deductible of the coverage (vehicle specific).
+                            example: '500'
+                    ratingData:
+                      type: object
+                      description: Rating data needed to do rating specific to each vehicle
+                      required:
+                        - ownership
+                        - yearlyMiles
+                        - usedForBusiness
+                        - usedForTNC
+                        - usedForCommuting
+                      properties:
+                        ownership:
+                          type: string
+                          description: 'The type of ownership. Possible values ''Financing'', ''Lease'', ''Own'''
+                          example: Financing
+                        yearlyMiles:
+                          type: string
+                          description: 'The amount of miles accumulated on the vehicle within a year. Possible values ''1 - 5,000'', ''5,001 - 7,500'', ''7,501 - 10,000'', ''10,001 or more'''
+                          example: '10,001 or more'
+                        usedForBusiness:
+                          type: string
+                          description: 'Indicates if the vehicle is used for business. Possible values ''Y'', ''N''.'
+                          example: 'Y'
+                        usedForTNC:
+                          type: string
+                          description: 'Indicates if the vehicle is used for TNC / rideshare. Possible values ''Y'', ''N''.'
+                          example: 'Y'
+                        usedForCommuting:
+                          type: string
+                          nullable: true
+                          description: 'Indicates if the vehicle is used for commuting. If yearlyMiles is less than or equal to 7500, the possible values are ''Y'', ''N''. If yearlyMiles is greater than 7500, then this field can also be null.'
+                          example: 'Y'

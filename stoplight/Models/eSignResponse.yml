@@ -1,0 +1,22 @@
+type: object
+properties:
+  statusCode:
+    type: integer
+    description: The status code of the response.
+    example: 200
+  title:
+    type: string
+    description: The title of the status code.
+    example: OK
+  details:
+    type: string
+    description: The details of the status code.
+    example: OK.
+  data:
+    type: object
+    description: Object of the document.
+    properties:
+      eSignature:
+        type: string
+        description: URL for document.
+        example: https://drive.google.com/file/d/1hAVIXkMhEV8iSKtE1KT-15xW7uxmq5_t/view?usp=sharing

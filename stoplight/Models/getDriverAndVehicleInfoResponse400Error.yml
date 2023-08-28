@@ -1,0 +1,22 @@
+type: object
+properties:
+  statusCode:
+    type: integer
+    description: The status code of the response.
+    example: 400
+  title:
+    type: string
+    description: The title of the status code.
+    example: Bad Request
+  details:
+    type: string
+    description: The details of the status code.
+    example: Check body parameters and/or values.
+  errors:
+    type: object
+    description: The errors object.
+    properties:
+      errorMessage:
+        type: string
+        description: The error message.
+        example: Missing body parameter 'zipCode'

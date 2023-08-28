@@ -1,0 +1,67 @@
+type: object
+properties:
+  data:
+    type: object
+    required:
+      - firstName
+      - lastName
+      - dateOfBirth
+      - maritalStatus
+      - driverLicenseNumber
+      - driverLicenseState
+      - phoneNumber
+      - street1
+      - street2
+      - city
+      - state
+      - zipCode
+    properties:
+      firstName:
+        type: string
+        description: The first name of the driver.
+        example: JOHN
+      lastName:
+        type: string
+        description: The last name of the driver.
+        example: SMITH
+      dateOfBirth:
+        type: string
+        description: The date of birth of the driver. Must follow the date format in the example.
+        example: '1990-07-21'
+      maritalStatus:
+        type: string
+        description: The date of marital status of the driver. Valid values are "S","M","W".
+        example: S
+      driverLicenseNumber:
+        type: string
+        description: The license number of the driver. This value must be encrypted.
+        example: 'uFijBnwWsRzNHhOqm6v077GB2ce3'
+      driverLicenseState:
+        type: string
+        description: The license state of the driver.
+        example: TX
+      phoneNumber:
+        type: string
+        description: The phone number of the driver. Must follow the format in the example.
+        example: '201-345-6765'
+      street1:
+        type: string
+        description: The street1 of the driver.
+        example: '9517 EVERGLADE DR'
+      street2:
+        type: string
+        nullable: true
+        description: The street2 of the driver.
+        example: 'Apartment 3B'
+      city:
+        type: string
+        description: The city of the driver.
+        example: Austin
+      state:
+        type: string
+        description: The state of the driver.
+        example: TX
+      zipCode:
+        type: string
+        description: The zip code of the driver. Acceptable formats are "12345" and "12345-6789".
+        example: '07695'
